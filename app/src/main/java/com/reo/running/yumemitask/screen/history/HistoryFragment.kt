@@ -1,4 +1,4 @@
-package com.reo.running.yumemitask.screen
+package com.reo.running.yumemitask.screen.history
 
 import android.os.Bundle
 import android.view.LayoutInflater

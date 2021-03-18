@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_list">
     <fragment
         android:id="@+id/nav_list"
-        android:name="com.reo.running.yumemitask.screen.ListFragment"
+        android:name="com.reo.running.yumemitask.screen.list.ListFragment"
         android:label="ListFragment"
         tools:layout="@layout/fragment_list">
         <action
@@ -15,12 +15,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_details"
-        android:name="com.reo.running.yumemitask.screen.DetailsFragment"
+        android:name="com.reo.running.yumemitask.screen.details.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details"/>
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.reo.running.yumemitask.screen.HistoryFragment"
+        android:name="com.reo.running.yumemitask.screen.history.HistoryFragment"
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history"/>
 </navigation>

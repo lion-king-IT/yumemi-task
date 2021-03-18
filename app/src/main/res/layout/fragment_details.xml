@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="vm"
+            type="com.reo.running.yumemitask.screen.details.DetailsViewModel" />
 
     </data>
 
@@ -13,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="詳細"
+            android:text="@{vm.detailsText}"
             android:textColor="@color/teal_200"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"

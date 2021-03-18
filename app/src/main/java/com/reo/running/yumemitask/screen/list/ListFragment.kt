@@ -21,6 +21,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        binding.run {
+           vm = ListViewModel()
            buttonView.setOnClickListener {
                findNavController().navigate(R.id.action_nav_list_to_nav_details)
            }

@@ -9,6 +9,7 @@ import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
     private lateinit var binding:FragmentHistoryBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentHistoryBinding.inflate(layoutInflater,container,false)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/fragmentList">
+    <fragment
+        android:id="@+id/fragmentList"
+        android:name="com.reo.running.yumemitask.screen.ListFragment"
+        android:label="fragmentList"
+        tools:layout="@layout/fragment_list"/>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.reo.running.yumemitask.screen.DetailsFragment"
+        android:label="fragmentDetails"
+        tools:layout="@layout/fragment_details"/>
+    <fragment
+        android:id="@+id/fragmentHistory"
+        android:name="com.reo.running.yumemitask.screen.HistoryFragment"
+        android:label="fragmentHistory"
+        tools:layout="@layout/fragment_history"/>
+</navigation>

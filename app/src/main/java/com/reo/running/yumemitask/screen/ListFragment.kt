@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.reo.running.yumemitask.R
 import com.reo.running.yumemitask.databinding.ActivityMainBinding
 import com.reo.running.yumemitask.databinding.FragmentListBinding
 
@@ -15,5 +19,14 @@ class ListFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentListBinding.inflate(layoutInflater,container,false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       binding.run {
+           buttonView.setOnClickListener {
+               findNavController().navigate(R.id.action_nav_list_to_nav_details)
+           }
+       }
     }
 }

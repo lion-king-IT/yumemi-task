@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.reo.running.yumemitask.R
 import com.reo.running.yumemitask.databinding.FragmentListBinding
+import com.reo.running.yumemitask.databinding.ItemRecyclerviewBinding
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
-    private val listViewModel = ListViewModel()
+    private val listViewModel: ListViewModel by viewModels ()
 
     override fun onCreateView(
         inflater: LayoutInflater,

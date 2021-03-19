@@ -9,17 +9,21 @@ import com.reo.running.yumemitask.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    private val detailsViewModel = DetailsViewModel()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentDetailsBinding.inflate(layoutInflater,container,false)
+        binding = FragmentDetailsBinding.inflate(layoutInflater, container, false)
+        binding.vm = detailsViewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.run {
-            vm = DetailsViewModel()
-            lifecycleOwner = this@DetailsFragment
-        }
     }
 }

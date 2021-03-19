@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HistoryViewModel : ViewModel() {
-    private val _historyText = MutableLiveData<String>()
+    private val _historyText: MutableLiveData<String> =
+        MutableLiveData<String>().also { mutableLiveData ->
+            mutableLiveData.value = "履歴"
+        }
     val historyText: LiveData<String>
         get() = _historyText
-    init {
-        _historyText.value = "履歴"
-    }
 }

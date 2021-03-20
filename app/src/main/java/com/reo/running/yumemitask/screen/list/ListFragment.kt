@@ -1,6 +1,7 @@
 package com.reo.running.yumemitask.screen.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,15 +55,16 @@ class ListFragment : Fragment() {
                 "ここにContributorの名前を表示させる",
             )
             val adapter = ListViewAdapter(detailsOfContributor,position)
+            recyclerview.adapter = adapter
+            recyclerview.layoutManager = LinearLayoutManager(requireContext())
             adapter.setOnItemClickListener(
                 object : ListViewAdapter.OnItemClickListener {
                     override fun onItemClick(list: List<String>, position: Int) {
+                        Log.d("debug","押せたよ！")
                         findNavController().navigate(R.id.action_nav_list_to_nav_details)
                     }
                 }
             )
-            recyclerview.adapter = adapter
-            recyclerview.layoutManager = LinearLayoutManager(requireContext())
         }
     }
 }

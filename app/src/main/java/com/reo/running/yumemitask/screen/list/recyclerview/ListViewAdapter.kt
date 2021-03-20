@@ -18,7 +18,7 @@ class ListViewAdapter(val list: List<String>,var index: Int) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.nameOfContributor.text = list[position]
         holder.itemView.setOnClickListener {
-
+            listener.onItemClick(list,position)
         }
     }
 

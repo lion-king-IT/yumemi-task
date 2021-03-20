@@ -1,4 +1,4 @@
-package com.reo.running.yumemitask.GithubAPI
+package com.reo.running.yumemitask.model
 
 class RemoteDataSource {
     suspend fun getRepository(): List<Github>? {

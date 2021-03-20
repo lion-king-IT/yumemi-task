@@ -1,9 +1,8 @@
-package com.reo.running.yumemitask.GithubAPI
+package com.reo.running.yumemitask.model
 
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 
 object APIClient {

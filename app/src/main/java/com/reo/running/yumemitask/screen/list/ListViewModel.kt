@@ -3,8 +3,8 @@ package com.reo.running.yumemitask.screen.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.reo.running.yumemitask.GithubAPI.Github
-import com.reo.running.yumemitask.GithubAPI.Repository
+import com.reo.running.yumemitask.model.Github
+import com.reo.running.yumemitask.model.Repository
 
 class ListViewModel(private val repository: Repository) : ViewModel() {
     val repositoryList: LiveData<List<Github>?> = repository.getRepository()

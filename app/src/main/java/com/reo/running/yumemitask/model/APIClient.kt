@@ -11,6 +11,6 @@ object APIClient {
 }
 
 interface IApiType {
-    @GET("repos/googlesamples/android-architecture-components/contributors")
+    @GET("users/android/repos")
     suspend fun fetchRepository(): Response<List<Github>>
 }

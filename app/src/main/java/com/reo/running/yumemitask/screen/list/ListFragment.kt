@@ -20,8 +20,6 @@ class ListFragment : Fragment() {
     private val listRecyclerViewAdapter: ListViewAdapter by lazy {
         ListViewAdapter()
     }
-    private var position = 0
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -75,6 +73,5 @@ class ListFragment : Fragment() {
         override fun getItemCount(): Int = listViewModel.repositoryList.value?.size ?: 0
     }
 
-    private inner class ListViewHolder(val binding: ItemRecyclerviewBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    private inner class ListViewHolder(val binding: ItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -1,5 +1,8 @@
 package com.reo.running.yumemitask.model
 
+import android.util.Log
+import com.google.android.play.core.appupdate.e
+
 class RemoteDataSource {
     suspend fun getRepository(): List<Github>? {
         try {

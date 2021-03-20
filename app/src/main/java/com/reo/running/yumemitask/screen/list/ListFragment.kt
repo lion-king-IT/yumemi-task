@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -54,17 +55,32 @@ class ListFragment : Fragment() {
                 "ここにContributorの名前を表示させる",
                 "ここにContributorの名前を表示させる",
             )
-            val adapter = ListViewAdapter(detailsOfContributor,position)
+            val adapter = ListViewAdapter(detailsOfContributor, position)
             recyclerview.adapter = adapter
             recyclerview.layoutManager = LinearLayoutManager(requireContext())
             adapter.setOnItemClickListener(
                 object : ListViewAdapter.OnItemClickListener {
                     override fun onItemClick(list: List<String>, position: Int) {
-                        Log.d("debug","押せたよ！")
+                        slideAnimation(listConstraintLayout)
                         findNavController().navigate(R.id.action_nav_list_to_nav_details)
                     }
                 }
             )
         }
+    }
+
+    fun slideAnimation(view: View) {
+        val translateAnimation = TranslateAnimation(
+            0f,
+            -1000f,
+            0f,
+            0f,
+        )
+        translateAnimation.run {
+            duration = 200
+            fillAfter = true
+        }
+
+        view.startAnimation(translateAnimation)
     }
 }

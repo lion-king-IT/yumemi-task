@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.reo.running.yumemitask.model.room.ContributorsDatabase
 
 class YumemiApplication : Application() {
+
     companion object {
         lateinit var db: ContributorsDatabase
     }

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="github"
+            type="com.reo.running.yumemitask.model.Github" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,26 +13,17 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/text_contributors"
+            android:id="@+id/nameContributors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="ここに詳細が表示されます"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            android:text="@{github.login}"
             android:textColor="@color/teal_200"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white"
-            android:text="詳細"
-            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

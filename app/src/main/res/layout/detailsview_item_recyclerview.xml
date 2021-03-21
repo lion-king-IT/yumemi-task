@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="github"
+            type="com.reo.running.yumemitask.model.Github" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/detailsContributors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{github.login}"
+            android:textSize="24sp"
+            android:textColor="@color/teal_200"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+</layout>

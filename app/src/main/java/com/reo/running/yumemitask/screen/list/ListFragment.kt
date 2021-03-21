@@ -1,6 +1,7 @@
 package com.reo.running.yumemitask.screen.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,22 +41,14 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
-            recyclerview.let {
-                val adapter = ListViewAdapter()
-                it.adapter = adapter
-                it.layoutManager = LinearLayoutManager(requireContext())
-                adapter.setOnItemClickListener(
-                    object : ListFragment.OnClickListener {
-                        override fun onItemClick(list: List<Int>, position: Int) {
-                            slideAnimation(listConstraintLayout)
-                            findNavController().navigate(R.id.action_nav_list_to_nav_details)
-                        }
-                    }
-                )
+            recyclerview.run {
+                adapter = listRecyclerViewAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext())
             }
-            listViewModel.repositoryList.observe(viewLifecycleOwner) {
-                listRecyclerViewAdapter.notifyDataSetChanged()
-            }
+        }
+        listViewModel.repositoryList.observe(viewLifecycleOwner) {
+            listRecyclerViewAdapter.notifyDataSetChanged()
         }
     }
 
@@ -73,10 +66,8 @@ class ListFragment : Fragment() {
         view.startAnimation(translateAnimation)
     }
 
+
     private inner class ListViewAdapter : RecyclerView.Adapter<ListViewHolder>() {
-
-        lateinit var listener: AdapterView.OnItemClickListener
-
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder =
             ListViewHolder(
                 ItemRecyclerviewBinding.inflate(
@@ -89,24 +80,15 @@ class ListFragment : Fragment() {
         override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
             holder.binding.run {
                 github = listViewModel.repositoryList.value?.get(position)
+                nameContributors.setOnClickListener { findNavController().navigate(R.id.action_nav_list_to_nav_details) }
                 lifecycleOwner = this@ListFragment
             }
         }
 
         override fun getItemCount(): Int = listViewModel.repositoryList.value?.size ?: 0
-
-        fun setOnItemClickListener(listener: OnClickListener) {
-            this.listener = listener
-        }
-
     }
-
-    interface OnClickListener : AdapterView.OnItemClickListener {
-        fun onItemClick(list: List<Int>, position: Int)
-        override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {}
-    }
-
 
     private inner class ListViewHolder(val binding: ItemRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root)
+
 }

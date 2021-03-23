@@ -1,22 +1,18 @@
 package com.reo.running.yumemitask.screen.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.reo.running.yumemitask.R
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentListBinding
 import com.reo.running.yumemitask.databinding.ListviewItemRecyclerviewBinding
-import com.reo.running.yumemitask.model.Github
 import com.reo.running.yumemitask.model.room.ContributorsData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -94,7 +90,6 @@ class ListFragment : Fragment() {
 //                    contributorsDao.insertContributors(contributorsDataArray)
 //                }
                 nameContributors.setOnClickListener {
-
                     github?.run {
                         val contributorsData = ContributorsData(
                             0,
@@ -123,7 +118,9 @@ class ListFragment : Fragment() {
                             val data = contributorsDao.getAll()
                         }
                     }
-                    findNavController().navigate(R.id.action_nav_list_to_nav_details)
+                    val contributorsName = nameContributors.text.toString()
+                    val action = ListFragmentDirections.actionNavListToNavDetails(contributorsName)
+                    findNavController().navigate(action)
                 }
                 lifecycleOwner = this@ListFragment
             }

@@ -3,4 +3,5 @@
     <string name="listTitle">リスト</string>
     <string name="historyTitle">履歴</string>
     <string name="details_text">詳細</string>
+    <string name="nameTitleText">- Contributors Name -</string>
 </resources>

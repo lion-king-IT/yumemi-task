@@ -11,9 +11,8 @@ abstract class ContributorsDatabase : RoomDatabase() {
 @Entity
 data class ContributorsData(
     @PrimaryKey(autoGenerate = true)
-    val num: Int,
-    val login: String,
     val id: Long,
+    val login: String,
     val node_id: String, val avatar_url: String,
     val gravatar_id: String,
     val url: String,

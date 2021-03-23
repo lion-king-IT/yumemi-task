@@ -24,7 +24,7 @@ class DetailsFragment : Fragment() {
     private val args: DetailsFragmentArgs by navArgs()
     private lateinit var binding: FragmentDetailsBinding
     private val detailsViewModel: DetailsViewModel by viewModels()
-    private lateinit var detailsList:List<String>
+    private lateinit var detailsList: List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,24 +43,25 @@ class DetailsFragment : Fragment() {
             lifecycleScope.launch(Dispatchers.IO) {
                 readDao.getAll().lastOrNull().let {
                     detailsList = listOf(
-                        it?.id.toString(),
-                        it?.node_id.toString(),
-                        it?.avatar_url.toString(),
-                        it?.gravatar_id.toString(),
-                        it?.url.toString(),
-                        it?.html_url.toString(),
-                        it?.followers_url.toString(),
-                        it?.following_url.toString(),
-                        it?.gists_url.toString(),
-                        it?.starred_url.toString(),
-                        it?.subscriptions_url.toString(),
-                        it?.organizations_url.toString(),
-                        it?.repos_url.toString(),
-                        it?.events_url.toString(),
-                        it?.received_events_url.toString(),
-                        it?.type.toString(),
-                        it?.site_admin.toString(),
-                        it?.contributions.toString(),
+
+                        "id : ${it?.id.toString()}",
+                        "node_id: ${it?.node_id.toString()}",
+                        "avatar_url : ${it?.avatar_url.toString()}",
+                        "gravatar_url : ${it?.gravatar_id.toString()}",
+                        "url : ${it?.url.toString()}",
+                        "html_url : ${it?.html_url.toString()}",
+                        "followers_url : ${it?.followers_url.toString()}",
+                        "following_url : ${it?.following_url.toString()}",
+                        "gists_url : ${it?.gists_url.toString()}",
+                        "starred_url : ${it?.starred_url.toString()}",
+                        "subscriptions_url : ${it?.subscriptions_url.toString()}",
+                        "organizations_url : ${it?.organizations_url.toString()}",
+                        "repos_url : ${it?.repos_url.toString()}",
+                        "events_url : ${it?.events_url.toString()}",
+                        "received_events_url : ${it?.received_events_url.toString()}",
+                        "type : ${it?.type.toString()}",
+                        "site_admin : ${it?.site_admin.toString()}",
+                        "contributions : ${it?.contributions.toString()}",
 
                         )
                 }

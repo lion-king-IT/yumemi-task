@@ -37,6 +37,16 @@ class HistoryFragment : Fragment() {
                 readDao.getAll().let {
                     val lastIndex = it.lastIndex
                     when {
+                        lastIndex > 4 -> {
+                            firstHistory.text = it[lastIndex].login
+                            secondHistory.text = it[lastIndex - 1].login
+                            thirdHistory.text = it[lastIndex - 2].login
+                        }
+                        lastIndex > 3 -> {
+                            firstHistory.text = it[lastIndex].login
+                            secondHistory.text = it[lastIndex - 1].login
+                            thirdHistory.text = it[lastIndex - 2].login
+                        }
                         lastIndex > 2 -> {
                             firstHistory.text = it[lastIndex].login
                             secondHistory.text = it[lastIndex - 1].login

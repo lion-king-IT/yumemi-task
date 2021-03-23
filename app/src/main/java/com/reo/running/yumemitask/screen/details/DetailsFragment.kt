@@ -45,7 +45,7 @@ class DetailsFragment : Fragment() {
                     detailsList = listOf(
 
                         "id : ${it?.id.toString()}",
-                        "node_id: ${it?.node_id.toString()}",
+                        "node_id : ${it?.node_id.toString()}",
                         "avatar_url : ${it?.avatar_url.toString()}",
                         "gravatar_url : ${it?.gravatar_id.toString()}",
                         "url : ${it?.url.toString()}",

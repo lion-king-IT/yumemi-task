@@ -29,4 +29,38 @@ class HistoryFragment : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.run {
+            lifecycleScope.launch(Dispatchers.IO) {
+                readDao.getAll().let {
+                    val lastIndex = it.lastIndex
+                    when {
+                        lastIndex > 2 -> {
+                            firstHistory.text = it[lastIndex].login
+                            secondHistory.text = it[lastIndex - 1].login
+                            thirdHistory.text = it[lastIndex - 2].login
+                        }
+
+                        lastIndex > 1 -> {
+                            firstHistory.text = it[lastIndex].login
+                            secondHistory.text = it[lastIndex - 1].login
+                        }
+
+                        lastIndex > 0 -> {
+                            firstHistory.text = it[lastIndex].login
+                        }
+
+                        lastIndex == null -> {
+                            firstHistory.text = "なし"
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+    }
 }

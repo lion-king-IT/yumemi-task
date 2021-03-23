@@ -71,10 +71,6 @@ class ListFragment : Fragment() {
                 github = listViewModel.repositoryList.value?.get(position)
                 github.run {
                     nameContributors.setOnClickListener {
-                        Log.d("debug","listViewModel.repositoryList.value?.get(position) = ${listViewModel.repositoryList.value?.get(position)}")
-                        Log.d("debug","listViewModel.repository.value = ${listViewModel.repositoryList.value}")
-                        Log.d("debug","listViewModel.repository = ${listViewModel.repositoryList}")
-                        Log.d("debug","github = $github")
                         github?.run {
                             val contributorsData = ContributorsData(
                                 0,
@@ -100,7 +96,6 @@ class ListFragment : Fragment() {
                             )
                             lifecycleScope.launch(Dispatchers.IO) {
                                 contributorsDao.insertContributors(contributorsData)
-                                Log.d("debug","contributorsDao.getAll() = ${contributorsDao.getAll()}")
                             }
                             val contributorsName = nameContributors.text.toString()
                             val action =

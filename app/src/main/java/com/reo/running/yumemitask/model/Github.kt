@@ -3,7 +3,8 @@ package com.reo.running.yumemitask.model
 data class Github(
     val login: String,
     val id: Long,
-    val node_id: String, val avatar_url: String,
+    val node_id: String,
+    val avatar_url: String,
     val gravatar_id: String,
     val url: String,
     val html_url: String,

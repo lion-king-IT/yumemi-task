@@ -70,33 +70,6 @@ class ListFragment : Fragment() {
         override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
             holder.binding.run {
                 github = listViewModel.repositoryList.value?.get(position)
-                github?.run {
-                    val contributorsData = ContributorsData(
-                        id,
-                        login,
-                        node_id,
-                        avatar_url,
-                        gravatar_id,
-                        url,
-                        html_url,
-                        followers_url,
-                        following_url,
-                        gists_url,
-                        starred_url,
-                        subscriptions_url,
-                        organizations_url,
-                        repos_url,
-                        events_url,
-                        received_events_url,
-                        type,
-                        site_admin,
-                        contributions
-                    )
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        contributorsDao.insertContributors(contributorsData)
-                        Log.d("debug","${contributorsDao.getAll()}")
-                    }
-                }
 //                github.run {
 //                    val contributorsDataArray = Github(
 //                        login,
@@ -121,6 +94,35 @@ class ListFragment : Fragment() {
 //                    contributorsDao.insertContributors(contributorsDataArray)
 //                }
                 nameContributors.setOnClickListener {
+
+                    github?.run {
+                        val contributorsData = ContributorsData(
+                            0,
+//                        id,
+                            login,
+//                        node_id,
+//                        avatar_url,
+//                        gravatar_id,
+//                        url,
+//                        html_url,
+//                        followers_url,
+//                        following_url,
+//                        gists_url,
+//                        starred_url,
+//                        subscriptions_url,
+//                        organizations_url,
+//                        repos_url,
+//                        events_url,
+//                        received_events_url,
+//                        type,
+//                        site_admin,
+//                        contributions
+                        )
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            contributorsDao.insertContributors(contributorsData)
+                            val data = contributorsDao.getAll()
+                        }
+                    }
                     findNavController().navigate(R.id.action_nav_list_to_nav_details)
                 }
                 lifecycleOwner = this@ListFragment

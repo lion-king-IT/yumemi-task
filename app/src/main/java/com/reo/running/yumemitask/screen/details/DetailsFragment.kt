@@ -7,9 +7,15 @@ import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentDetailsBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailsFragment : Fragment() {
+    private val readDao = YumemiApplication.db.contributorsDao()
     private lateinit var binding: FragmentDetailsBinding
     private val detailsViewModel: DetailsViewModel by viewModels()
 
@@ -29,6 +35,13 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             slideAnimation(detailsConstraintLayout)
+            lifecycleScope.launch(Dispatchers.IO) {
+                val details = readDao.getAll()
+                withContext(Dispatchers.Main) {
+                    detailsText.text = details.lastOrNull()?.login.toString()
+                }
+            }
+
         }
     }
 

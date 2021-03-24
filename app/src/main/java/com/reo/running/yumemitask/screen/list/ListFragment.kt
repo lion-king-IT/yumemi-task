@@ -18,6 +18,7 @@ import com.reo.running.yumemitask.model.Github
 import com.reo.running.yumemitask.model.room.ContributorsData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
@@ -28,6 +29,7 @@ class ListFragment : Fragment() {
     private val listRecyclerViewAdapter: ListViewAdapter by lazy {
         ListViewAdapter()
     }
+    private var lastIndex = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -96,11 +98,20 @@ class ListFragment : Fragment() {
                             )
                             lifecycleScope.launch(Dispatchers.IO) {
                                 contributorsDao.insertContributors(contributorsData)
+                                lastIndex = contributorsDao.getAll().lastIndex
+
+                                withContext(Dispatchers.Main) {
+                                    val contributorsName = nameContributors.text.toString()
+                                    val action =
+                                        ListFragmentDirections.actionNavListToNavDetails(
+                                            contributorsName,
+                                            lastIndex
+                                        )
+                                    findNavController().navigate(action)
+                                }
+
                             }
-                            val contributorsName = nameContributors.text.toString()
-                            val action =
-                                ListFragmentDirections.actionNavListToNavDetails(contributorsName)
-                            findNavController().navigate(action)
+
                         }
 
                     }
@@ -110,7 +121,6 @@ class ListFragment : Fragment() {
         }
 
         override fun getItemCount(): Int = listViewModel.repositoryList.value?.size ?: 0
-
 
     }
 

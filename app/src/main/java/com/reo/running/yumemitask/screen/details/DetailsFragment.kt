@@ -41,29 +41,30 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             lifecycleScope.launch(Dispatchers.IO) {
-                readDao.getAll().lastOrNull().let {
-                    detailsList = listOf(
-
-                        "id : ${it?.id.toString()}",
-                        "node_id : ${it?.node_id.toString()}",
-                        "avatar_url : ${it?.avatar_url.toString()}",
-                        "gravatar_url : ${it?.gravatar_id.toString()}",
-                        "url : ${it?.url.toString()}",
-                        "html_url : ${it?.html_url.toString()}",
-                        "followers_url : ${it?.followers_url.toString()}",
-                        "following_url : ${it?.following_url.toString()}",
-                        "gists_url : ${it?.gists_url.toString()}",
-                        "starred_url : ${it?.starred_url.toString()}",
-                        "subscriptions_url : ${it?.subscriptions_url.toString()}",
-                        "organizations_url : ${it?.organizations_url.toString()}",
-                        "repos_url : ${it?.repos_url.toString()}",
-                        "events_url : ${it?.events_url.toString()}",
-                        "received_events_url : ${it?.received_events_url.toString()}",
-                        "type : ${it?.type.toString()}",
-                        "site_admin : ${it?.site_admin.toString()}",
-                        "contributions : ${it?.contributions.toString()}",
-
+                readDao.getAll().let {
+                    it[args.index].let {
+                        detailsList = listOf(
+                            "id : ${it?.id}",
+                            "node_id : ${it?.node_id}",
+                            "avatar_url : ${it?.avatar_url}",
+                            "gravatar_url : ${it?.gravatar_id}",
+                            "url : ${it?.url.toString()}",
+                            "html_url : ${it?.html_url.toString()}",
+                            "followers_url : ${it?.followers_url.toString()}",
+                            "following_url : ${it?.following_url.toString()}",
+                            "gists_url : ${it?.gists_url.toString()}",
+                            "starred_url : ${it?.starred_url.toString()}",
+                            "subscriptions_url : ${it?.subscriptions_url.toString()}",
+                            "organizations_url : ${it?.organizations_url.toString()}",
+                            "repos_url : ${it?.repos_url.toString()}",
+                            "events_url : ${it?.events_url.toString()}",
+                            "received_events_url : ${it?.received_events_url.toString()}",
+                            "type : ${it?.type.toString()}",
+                            "site_admin : ${it?.site_admin.toString()}",
+                            "contributions : ${it?.contributions.toString()}",
                         )
+                    }
+
                 }
                 withContext(Dispatchers.Main) {
                     contributorsName.text = args.contributorsName

@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
+import com.reo.running.yumemitask.screen.details.DetailsFragmentArgs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,6 +25,7 @@ class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
     private val historyViewModel: HistoryViewModel by viewModels()
     private lateinit var action: NavDirections
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,10 +50,22 @@ class HistoryFragment : Fragment() {
                     }
                 }
                 withContext(Dispatchers.Main) {
-                    historyRecyclerView.adapter = HistoryViewAdapter(historyList)
+                    var position = 0
+                    val adapter = HistoryViewAdapter(historyList, position)
+                    historyRecyclerView.adapter = adapter
                     historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    adapter.setOnItemClickListener(
+                        object : HistoryViewAdapter.OnClickListener {
+                            override fun onItemClick(list: List<String>, position: Int) {
+                                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                                    historyList[position],
+                                    position
+                                )
+                                findNavController().navigate(action)
+                            }
+                        }
+                    )
                 }
-
             }
 
 

@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.reo.running.yumemitask.R
 
-class HistoryViewAdapter(val list : List<String>) : RecyclerView.Adapter<HistoryViewHolder>() {
+class HistoryViewAdapter(val list : List<String>,var index: Int) : RecyclerView.Adapter<HistoryViewHolder>() {
+
+    private lateinit var listener :  OnClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.historyview_item_recyclerview,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.history_item_recyclerview,parent,false)
         return HistoryViewHolder(itemView)
     }
 
@@ -16,4 +19,12 @@ class HistoryViewAdapter(val list : List<String>) : RecyclerView.Adapter<History
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface OnClickListener {
+        fun onItemClick(list: List<String>,position: Int)
+    }
+
+    fun setOnItemClickListener(listener:OnClickListener) {
+        this.listener = listener
+    }
 }

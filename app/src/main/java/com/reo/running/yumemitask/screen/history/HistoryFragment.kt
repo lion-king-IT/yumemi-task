@@ -57,6 +57,7 @@ class HistoryFragment : Fragment() {
                     adapter.setOnItemClickListener(
                         object : HistoryViewAdapter.OnClickListener {
                             override fun onItemClick(list: List<String>, position: Int) {
+                                println(position)
                                 val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
                                     historyList[position],
                                     position

@@ -16,6 +16,9 @@ class HistoryViewAdapter(val list : List<String>,var index: Int) : RecyclerView.
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.historyName.text = list[position]
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(list,position)
+        }
     }
 
     override fun getItemCount(): Int = list.size

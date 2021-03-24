@@ -3,9 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="vm"
-            type="com.reo.running.yumemitask.screen.details.DetailsViewModel" />
 
     </data>
 
@@ -15,15 +12,36 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/details_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.detailsText}"
+            android:layout_marginTop="32dp"
+            android:text="@string/details_text"
             android:textColor="@color/teal_200"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/contributorsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="aaaaaa"
+            android:textColor="@color/teal_200"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detailsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contributorsName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

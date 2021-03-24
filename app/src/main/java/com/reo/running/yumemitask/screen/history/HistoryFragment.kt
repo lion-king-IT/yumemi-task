@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
@@ -21,6 +22,7 @@ class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
     private val historyViewModel: HistoryViewModel by viewModels()
     private var lastIndex = 0
+    private lateinit var action: NavDirections
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,36 +40,51 @@ class HistoryFragment : Fragment() {
         binding.run {
             lifecycleScope.launch(Dispatchers.IO) {
                 contributorsDao.getAll().let {
+                    lastIndex = it.lastIndex
+                    println(lastIndex)
                     withContext(Dispatchers.Main) {
-                        lastIndex = it.lastIndex
-                        println(lastIndex)
                         when {
-                            lastIndex > 4 -> {
-                                firstHistory.text = it[lastIndex].login
-                                secondHistory.text = it[lastIndex - 1].login
-                                thirdHistory.text = it[lastIndex - 2].login
-                                fourthHistroy.text = it[lastIndex - 3].login
-                                fifthHistory.text = it[lastIndex - 4].login
-                            }
                             lastIndex > 3 -> {
                                 firstHistory.text = it[lastIndex].login
+                                firstHistory.visibility = View.VISIBLE
                                 secondHistory.text = it[lastIndex - 1].login
+                                secondHistory.visibility = View.VISIBLE
                                 thirdHistory.text = it[lastIndex - 2].login
+                                thirdHistory.visibility = View.VISIBLE
                                 fourthHistroy.text = it[lastIndex - 3].login
+                                fourthHistroy.visibility = View.VISIBLE
+                                fifthHistory.text = it[lastIndex - 4].login
+                                fifthHistory.visibility = View.VISIBLE
                             }
                             lastIndex > 2 -> {
                                 firstHistory.text = it[lastIndex].login
+                                firstHistory.visibility = View.VISIBLE
                                 secondHistory.text = it[lastIndex - 1].login
+                                secondHistory.visibility = View.VISIBLE
                                 thirdHistory.text = it[lastIndex - 2].login
+                                thirdHistory.visibility = View.VISIBLE
+                                fourthHistroy.text = it[lastIndex - 3].login
+                                fourthHistroy.visibility = View.VISIBLE
                             }
-
                             lastIndex > 1 -> {
                                 firstHistory.text = it[lastIndex].login
+                                firstHistory.visibility = View.VISIBLE
                                 secondHistory.text = it[lastIndex - 1].login
+                                secondHistory.visibility = View.VISIBLE
+                                thirdHistory.text = it[lastIndex - 2].login
+                                thirdHistory.visibility = View.VISIBLE
                             }
 
                             lastIndex > 0 -> {
                                 firstHistory.text = it[lastIndex].login
+                                firstHistory.visibility = View.VISIBLE
+                                secondHistory.text = it[lastIndex - 1].login
+                                secondHistory.visibility = View.VISIBLE
+                            }
+
+                            lastIndex > -1 -> {
+                                firstHistory.text = it[lastIndex].login
+                                firstHistory.visibility = View.VISIBLE
                             }
 
                             else -> {
@@ -79,39 +96,40 @@ class HistoryFragment : Fragment() {
             }
 
             firstHistory.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
                     firstHistory.text.toString(),
                     lastIndex
                 )
                 findNavController().navigate(action)
             }
             secondHistory.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    firstHistory.text.toString(),
-                    lastIndex - 1
+                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                    secondHistory.text.toString(),
+                    (lastIndex - 1)
                 )
                 findNavController().navigate(action)
             }
             thirdHistory.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    firstHistory.text.toString(),
-                    lastIndex - 2
+                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                    thirdHistory.text.toString(),
+                    (lastIndex - 2)
                 )
                 findNavController().navigate(action)
             }
             fourthHistroy.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    firstHistory.text.toString(),
-                    lastIndex - 3
+                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                    fourthHistroy.text.toString(),
+                    (lastIndex - 3)
                 )
                 findNavController().navigate(action)
             }
             fifthHistory.setOnClickListener {
-                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    firstHistory.text.toString(),
-                    lastIndex - 4
+                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                    fifthHistory.text.toString(),
+                    (lastIndex - 4)
                 )
                 findNavController().navigate(action)
+
             }
         }
     }

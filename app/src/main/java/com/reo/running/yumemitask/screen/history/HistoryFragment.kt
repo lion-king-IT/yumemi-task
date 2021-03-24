@@ -11,8 +11,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
+import com.reo.running.yumemitask.screen.details.DetailsFragmentArgs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,8 +24,8 @@ class HistoryFragment : Fragment() {
     private val contributorsDao = YumemiApplication.db.contributorsDao()
     private lateinit var binding: FragmentHistoryBinding
     private val historyViewModel: HistoryViewModel by viewModels()
-    private var lastIndex = 0
     private lateinit var action: NavDirections
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,98 +42,34 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             lifecycleScope.launch(Dispatchers.IO) {
+                val lastIndex = contributorsDao.getAll().lastIndex
+                val historyList: MutableList<String> = mutableListOf()
                 contributorsDao.getAll().let {
-                    lastIndex = it.lastIndex
-                    println(lastIndex)
-                    withContext(Dispatchers.Main) {
-                        when {
-                            lastIndex > 3 -> {
-                                firstHistory.text = it[lastIndex].login
-                                firstHistory.visibility = View.VISIBLE
-                                secondHistory.text = it[lastIndex - 1].login
-                                secondHistory.visibility = View.VISIBLE
-                                thirdHistory.text = it[lastIndex - 2].login
-                                thirdHistory.visibility = View.VISIBLE
-                                fourthHistroy.text = it[lastIndex - 3].login
-                                fourthHistroy.visibility = View.VISIBLE
-                                fifthHistory.text = it[lastIndex - 4].login
-                                fifthHistory.visibility = View.VISIBLE
-                            }
-                            lastIndex > 2 -> {
-                                firstHistory.text = it[lastIndex].login
-                                firstHistory.visibility = View.VISIBLE
-                                secondHistory.text = it[lastIndex - 1].login
-                                secondHistory.visibility = View.VISIBLE
-                                thirdHistory.text = it[lastIndex - 2].login
-                                thirdHistory.visibility = View.VISIBLE
-                                fourthHistroy.text = it[lastIndex - 3].login
-                                fourthHistroy.visibility = View.VISIBLE
-                            }
-                            lastIndex > 1 -> {
-                                firstHistory.text = it[lastIndex].login
-                                firstHistory.visibility = View.VISIBLE
-                                secondHistory.text = it[lastIndex - 1].login
-                                secondHistory.visibility = View.VISIBLE
-                                thirdHistory.text = it[lastIndex - 2].login
-                                thirdHistory.visibility = View.VISIBLE
-                            }
-
-                            lastIndex > 0 -> {
-                                firstHistory.text = it[lastIndex].login
-                                firstHistory.visibility = View.VISIBLE
-                                secondHistory.text = it[lastIndex - 1].login
-                                secondHistory.visibility = View.VISIBLE
-                            }
-
-                            lastIndex > -1 -> {
-                                firstHistory.text = it[lastIndex].login
-                                firstHistory.visibility = View.VISIBLE
-                            }
-
-                            else -> {
-                                firstHistory.text = "なし"
+                    for (i in lastIndex downTo 0 step 1) {
+                        historyList.add(it[i].login)
+                    }
+                }
+                withContext(Dispatchers.Main) {
+                    var position = 0
+                    val adapter = HistoryViewAdapter(historyList, position)
+                    historyRecyclerView.adapter = adapter
+                    historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    adapter.setOnItemClickListener(
+                        object : HistoryViewAdapter.OnClickListener {
+                            override fun onItemClick(list: List<String>, position: Int) {
+                                println(position)
+                                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
+                                    historyList[position],
+                                    position
+                                )
+                                findNavController().navigate(action)
                             }
                         }
-                    }
+                    )
                 }
             }
 
-            firstHistory.setOnClickListener {
-                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    firstHistory.text.toString(),
-                    lastIndex
-                )
-                findNavController().navigate(action)
-            }
-            secondHistory.setOnClickListener {
-                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    secondHistory.text.toString(),
-                    (lastIndex - 1)
-                )
-                findNavController().navigate(action)
-            }
-            thirdHistory.setOnClickListener {
-                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    thirdHistory.text.toString(),
-                    (lastIndex - 2)
-                )
-                findNavController().navigate(action)
-            }
-            fourthHistroy.setOnClickListener {
-                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    fourthHistroy.text.toString(),
-                    (lastIndex - 3)
-                )
-                findNavController().navigate(action)
-            }
-            fifthHistory.setOnClickListener {
-                action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                    fifthHistory.text.toString(),
-                    (lastIndex - 4)
-                )
-                findNavController().navigate(action)
 
-            }
         }
     }
 

@@ -42,26 +42,26 @@ class DetailsFragment : Fragment() {
         binding.run {
             lifecycleScope.launch(Dispatchers.IO) {
                 readDao.getAll().let {
-                    it[args.index].let {
+                    it[args.index].run {
                         detailsList = listOf(
-                            "id : ${it?.id}",
-                            "node_id : ${it?.node_id}",
-                            "avatar_url : ${it?.avatar_url}",
-                            "gravatar_url : ${it?.gravatar_id}",
-                            "url : ${it?.url.toString()}",
-                            "html_url : ${it?.html_url.toString()}",
-                            "followers_url : ${it?.followers_url.toString()}",
-                            "following_url : ${it?.following_url.toString()}",
-                            "gists_url : ${it?.gists_url.toString()}",
-                            "starred_url : ${it?.starred_url.toString()}",
-                            "subscriptions_url : ${it?.subscriptions_url.toString()}",
-                            "organizations_url : ${it?.organizations_url.toString()}",
-                            "repos_url : ${it?.repos_url.toString()}",
-                            "events_url : ${it?.events_url.toString()}",
-                            "received_events_url : ${it?.received_events_url.toString()}",
-                            "type : ${it?.type.toString()}",
-                            "site_admin : ${it?.site_admin.toString()}",
-                            "contributions : ${it?.contributions.toString()}",
+                            "id : $id",
+                            "node_id : $node_id",
+                            "avatar_url : $avatar_url",
+                            "gravatar_url : $gravatar_id",
+                            "url : $url",
+                            "html_url : $html_url",
+                            "followers_url : $followers_url",
+                            "following_url : $following_url",
+                            "gists_url : $gists_url",
+                            "starred_url : $starred_url",
+                            "subscriptions_url : $subscriptions_url",
+                            "organizations_url : $organizations_url",
+                            "repos_url : $repos_url",
+                            "events_url : $events_url",
+                            "received_events_url : $received_events_url",
+                            "type : $type",
+                            "site_admin : $site_admin",
+                            "contributions : $contributions",
                         )
                     }
 

@@ -31,8 +31,10 @@ GithubAPI
 ・https://qiita.com/KIRIN3qiita/items/7d833e2c010c0b2c02d9   
 ・https://qiita.com/kosuke0113/items/6b0fd041b0dd61693b77  
 ・https://qiita.com/iTakahiro/items/7e0d63140ae4dac10d18  
-・https://qiita.com/iTakahiro/items/6b1b22efa69e55cea3fa 
+・https://qiita.com/iTakahiro/items/6b1b22efa69e55cea3fa  
 ・https://peaks.cc/books/android_testing    
 # 製作期間
 6日
+# 苦労した点
+・RoomDBのプライマリーキーをString型にしていたのを気づかずに、1日エラー原因を探す羽目になったこと
 

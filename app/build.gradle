@@ -91,7 +91,4 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
-    androidTestImplementation 'com.android.support.test:testing-support-lib:0.1'
-    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
-
 }

@@ -28,8 +28,8 @@ GithubAPI
 ・https://qiita.com/dosukoi_android/items/24ba411a02f4b6c3a447  
 ・https://qiita.com/lovee/items/d76c68341ec3e7beb611  
 ・https://qiita.com/zakimiiiii/items/70b586b8a108783a0426  
-・https://qiita.com/KIRIN3qiita/items/7d833e2c010c0b2c02d9  
-・https://qiita.com/kosuke0113/items/6b0fd041b0dd61693b77　
+・https://qiita.com/KIRIN3qiita/items/7d833e2c010c0b2c02d9   
+・https://qiita.com/kosuke0113/items/6b0fd041b0dd61693b77  
 ・https://qiita.com/iTakahiro/items/7e0d63140ae4dac10d18  
 ・https://qiita.com/iTakahiro/items/6b1b22efa69e55cea3fa  
 # 製作期間

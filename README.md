@@ -32,7 +32,7 @@ GithubAPI
 ・https://qiita.com/kosuke0113/items/6b0fd041b0dd61693b77  
 ・https://qiita.com/iTakahiro/items/7e0d63140ae4dac10d18  
 ・https://qiita.com/iTakahiro/items/6b1b22efa69e55cea3fa 
-・https://peaks.cc/books/android_testing  
+・https://peaks.cc/books/android_testing    
 # 製作期間
 6日
 

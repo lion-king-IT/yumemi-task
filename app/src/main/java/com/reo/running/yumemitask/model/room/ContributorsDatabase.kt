@@ -1,7 +1,7 @@
 package com.reo.running.yumemitask.model.room
 
 import androidx.room.*
-import com.reo.running.yumemitask.model.Github
+import com.reo.running.yumemitask.model.Contributor
 
 @Database(entities = [ContributorsData::class], version = 1)
 abstract class ContributorsDatabase : RoomDatabase() {

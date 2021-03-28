@@ -1,8 +1,13 @@
 package com.reo.running.yumemitask.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Github(
-    val login: String,
+    @PrimaryKey
     val id: Long,
+    val login: String,
     val node_id: String,
     val avatar_url: String,
     val gravatar_id: String,

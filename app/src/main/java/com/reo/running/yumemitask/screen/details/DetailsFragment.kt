@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -23,7 +24,7 @@ class DetailsFragment : Fragment() {
     private val readDao = YumemiApplication.db.contributorsDao()
     private val args: DetailsFragmentArgs by navArgs()
     private lateinit var binding: FragmentDetailsBinding
-    private val detailsViewModel: DetailsViewModel by viewModels()
+    private val detailsViewModel: DetailsViewModel by activityViewModels()
     private lateinit var detailsList: List<String>
 
     override fun onCreateView(

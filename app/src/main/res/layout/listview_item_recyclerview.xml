@@ -5,10 +5,11 @@
     <data>
         <variable
             name="github"
-            type="com.reo.running.yumemitask.model.Github" />
+            type="com.reo.running.yumemitask.model.Contributor" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -82,7 +82,7 @@ class ListFragment : Fragment() {
             }
         }
 
-        override fun getItemCount(): Int = listViewModel.repositoryList.value?.size ?: 0
+        override fun getItemCount(): Int = listViewModel.contributorsList.value?.size ?: 0
 
     }
 

@@ -67,6 +67,8 @@
                     android:text="@{viewModel.selectedContributor.idText()}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/idTitle" />
@@ -91,7 +93,8 @@
                     android:text="@{viewModel.selectedContributor.node_id}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
-                    android:padding="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/nodeIdTitle" />
@@ -116,6 +119,8 @@
                     android:text="@{viewModel.selectedContributor.avatar_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/avatarUrlTitle" />
@@ -140,6 +145,8 @@
                     android:text="@{viewModel.selectedContributor.login}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/gravatarIdTitle" />
@@ -164,6 +171,8 @@
                     android:text="@{viewModel.selectedContributor.url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/urlTitle" />
@@ -188,6 +197,8 @@
                     android:text="@{viewModel.selectedContributor.html_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/htmlTitle" />
@@ -212,6 +223,8 @@
                     android:text="@{viewModel.selectedContributor.followers_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/followersUrlTitle" />
@@ -237,6 +250,8 @@
                     android:text="@{viewModel.selectedContributor.url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/followingTitle" />
@@ -261,6 +276,8 @@
                     android:text="@{viewModel.selectedContributor.gists_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/gistsUrlTitle" />
@@ -285,6 +302,8 @@
                     android:text="@{viewModel.selectedContributor.starred_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/starredUrlTitle" />
@@ -309,6 +328,8 @@
                     android:text="@{viewModel.selectedContributor.subscriptions_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/subscriptionsUrlTitle" />
@@ -333,6 +354,8 @@
                     android:text="@{viewModel.selectedContributor.organizations_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/organizationUrlTitle" />
@@ -357,6 +380,8 @@
                     android:text="@{viewModel.selectedContributor.repos_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reposUrlTitle" />
@@ -381,6 +406,8 @@
                     android:text="@{viewModel.selectedContributor.events_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/eventsUrlTitle" />
@@ -405,6 +432,8 @@
                     android:text="@{viewModel.selectedContributor.received_events_url}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/receivedEventsUrlTitle" />
@@ -429,6 +458,8 @@
                     android:text="@{viewModel.selectedContributor.type}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/typeTitle" />
@@ -453,6 +484,8 @@
                     android:text="@{viewModel.selectedContributor.siteAdminText}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/siteAdminTitle" />
@@ -477,6 +510,8 @@
                     android:text="@{viewModel.selectedContributor.contributionsText()}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/contributionsTitle" />

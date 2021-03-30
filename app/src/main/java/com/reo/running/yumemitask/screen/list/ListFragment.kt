@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
     private val listViewModel: ListViewModel by viewModels {
-        ListViewModel.Companion.Facroty()
+        ListViewModel.Companion.Factory()
     }
     private val listRecyclerViewAdapter: ListViewAdapter by lazy {
         ListViewAdapter()

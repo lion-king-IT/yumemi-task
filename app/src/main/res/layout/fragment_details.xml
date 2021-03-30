@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.reo.running.yumemitask.screen.list.ListViewModel" />
@@ -15,7 +16,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/details_title"
+            android:id="@+id/detailsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -27,24 +28,461 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/contributorsName"
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="aaaaaa"
+            android:text="@{viewModel.selectedContributor.login}"
             android:textColor="@color/teal_200"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_title" />
+            app:layout_constraintTop_toBottomOf="@id/detailsTitle" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detailsRecyclerView"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="16dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contributorsName" />
+            app:layout_constraintTop_toBottomOf="@id/login">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/idTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsId"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.id}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/idTitle" />
+
+                <TextView
+                    android:id="@+id/nodeIdTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contiruborsNodeId"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    app:layout_constraintTop_toBottomOf="@id/id"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/nodeId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.node_id}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nodeIdTitle" />
+
+                <TextView
+                    android:id="@+id/avatarUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contributorsAvatarUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    app:layout_constraintTop_toBottomOf="@id/nodeId"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/avatarUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.avatar_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avatarUrlTitle" />
+
+                <TextView
+                    android:id="@+id/gravatarIdTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contributorsGrvatarIdTitle"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toBottomOf="@id/avatarUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/gravatarId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.login}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gravatarIdTitle" />
+
+                <TextView
+                    android:id="@+id/urlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/contributorsUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    app:layout_constraintTop_toBottomOf="@id/gravatarId"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/urlTitle" />
+
+                <TextView
+                    android:id="@+id/htmlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsHtmlUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/url"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/htmlUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.html_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/htmlTitle" />
+
+                <TextView
+                    android:id="@+id/followersUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsFollowersUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/htmlUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/followersUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.followers_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/followersUrlTitle" />
+
+
+                <TextView
+                    android:id="@+id/followingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsFollowingUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/followersUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/followingUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/followingTitle" />
+
+                <TextView
+                    android:id="@+id/gistsUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsGistsUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/followingUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/gistsUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.gists_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gistsUrlTitle" />
+
+                <TextView
+                    android:id="@+id/starredUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsStarredUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/gistsUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/starredUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.starred_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/starredUrlTitle" />
+
+                <TextView
+                    android:id="@+id/subscriptionsUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsSubscriptionUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/starredUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/subscriptionUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.subscriptions_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/subscriptionsUrlTitle" />
+
+                <TextView
+                    android:id="@+id/organizationUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsOrganizationsUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/subscriptionUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/organizationUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.organizations_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/organizationUrlTitle" />
+
+                <TextView
+                    android:id="@+id/reposUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsReposUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/organizationUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/reposUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.repos_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reposUrlTitle" />
+
+                <TextView
+                    android:id="@+id/eventsUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsEventsUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/reposUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/eventsUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.events_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/eventsUrlTitle" />
+
+                <TextView
+                    android:id="@+id/receivedEventsUrlTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsReceivedEventsUrl"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/eventsUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/receivedEventsUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.received_events_url}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/receivedEventsUrlTitle" />
+
+                <TextView
+                    android:id="@+id/typeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsType"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/receivedEventsUrl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.type}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/typeTitle" />
+
+                <TextView
+                    android:id="@+id/siteAdminTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsSiteAdmin"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/type"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/siteAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.site_admin}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/siteAdminTitle" />
+
+                <TextView
+                    android:id="@+id/contributionsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contributorsContributors"
+                    android:textSize="24sp"
+                    android:textColor="@color/teal_200"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/siteAdmin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/contributions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.selectedContributor.contributions}"
+                    android:textColor="@color/teal_200"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contributionsTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

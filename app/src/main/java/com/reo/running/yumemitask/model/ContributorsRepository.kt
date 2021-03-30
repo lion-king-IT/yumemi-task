@@ -16,6 +16,10 @@ class ContributorsRepository(
         }
     }
 
+    suspend fun displayHistory(): Contributor? {
+        return contributorsDataDao.getAll().lastOrNull()
+    }
+
     suspend fun saveHistory(contributor: Contributor) {
         contributorsDataDao.insertContributors(contributor)
     }

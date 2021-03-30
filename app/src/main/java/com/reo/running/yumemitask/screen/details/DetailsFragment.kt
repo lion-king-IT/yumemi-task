@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.reo.running.yumemitask.databinding.FragmentDetailsBinding
 import com.reo.running.yumemitask.screen.list.ListViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
-    private val viewModel: ListViewModel by activityViewModels()
+    private val viewModel: ListViewModel by activityViewModels() {
+        ListViewModel.Companion.Factory()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,12 +32,8 @@ class DetailsFragment : Fragment() {
         binding.let {
             it.lifecycleOwner = viewLifecycleOwner
             it.viewModel = viewModel
-            lifecycleScope.launch(Dispatchers.IO) {
-
-            }
         }
     }
-
 
     fun slideAnimation(view: View) {
         val translateAnimation = TranslateAnimation(

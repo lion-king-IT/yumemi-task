@@ -23,7 +23,8 @@ class ListViewModel(
     }
 
     companion object {
-        class Factory(private val repository: ContributorsRepository = ContributorsRepository()
+        class Factory(
+            private val repository: ContributorsRepository = ContributorsRepository()
         ) : ViewModelProvider.NewInstanceFactory() {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel?> create(modelClass: Class<T>): T =

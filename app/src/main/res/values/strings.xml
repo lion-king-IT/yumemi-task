@@ -22,5 +22,5 @@
     <string name="contributorsReceivedEventsUrl">received_events_url</string>
     <string name="contributorsType">type</string>
     <string name="contributorsSiteAdmin">site_admin</string>
-    <string name="contributorsContributors">contributors</string>
+    <string name="contributorsContributors">contributions</string>
 </resources>

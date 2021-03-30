@@ -59,8 +59,7 @@ class HistoryFragment : Fragment() {
                             override fun onItemClick(list: List<String>, position: Int) {
                                 println(position)
                                 val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                                    historyList[position],
-                                    position
+                                    historyList[position]
                                 )
                                 findNavController().navigate(action)
                             }

@@ -8,16 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentListBinding
 import com.reo.running.yumemitask.databinding.ListviewItemRecyclerviewBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
@@ -51,7 +46,6 @@ class ListFragment : Fragment() {
         listViewModel.contributorsList.observe(viewLifecycleOwner, Observer {
             listRecyclerViewAdapter.notifyDataSetChanged()
         })
-
     }
 
     private inner class ListViewAdapter : RecyclerView.Adapter<ListViewHolder>() {
@@ -78,7 +72,6 @@ class ListFragment : Fragment() {
                         }
                     }
                 }
-
             }
         }
 

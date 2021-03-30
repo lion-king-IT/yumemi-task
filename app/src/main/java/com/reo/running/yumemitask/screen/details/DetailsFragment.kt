@@ -12,9 +12,7 @@ import com.reo.running.yumemitask.screen.list.ListViewModel
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
-    private val viewModel: ListViewModel by activityViewModels() {
-        ListViewModel.Companion.Factory()
-    }
+    private val viewModel: ListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

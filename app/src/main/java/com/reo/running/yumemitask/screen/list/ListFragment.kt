@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -16,7 +17,7 @@ import com.reo.running.yumemitask.databinding.ListviewItemRecyclerviewBinding
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
-    private val listViewModel: ListViewModel by viewModels {
+    private val listViewModel: ListViewModel by activityViewModels() {
         ListViewModel.Companion.Factory()
     }
     private val listRecyclerViewAdapter: ListViewAdapter by lazy {

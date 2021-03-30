@@ -14,7 +14,7 @@ interface ContributorsDataDao {
     @Query("Select * From contributor")
     suspend fun getAll(): List<Contributor>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertContributors(contributors: Contributor)
 
     @Update

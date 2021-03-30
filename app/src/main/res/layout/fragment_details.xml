@@ -63,7 +63,7 @@
                     android:id="@+id/id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:text="@{viewModel.selectedContributor.idText()}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
@@ -91,6 +91,7 @@
                     android:text="@{viewModel.selectedContributor.node_id}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
+                    android:padding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/nodeIdTitle" />

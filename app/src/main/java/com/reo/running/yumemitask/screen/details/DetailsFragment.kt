@@ -8,14 +8,10 @@ import android.view.animation.TranslateAnimation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentDetailsBinding
 import com.reo.running.yumemitask.screen.list.ListViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding

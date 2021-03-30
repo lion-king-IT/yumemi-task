@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.reo.running.yumemitask.R
+import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
 
 class HistoryViewAdapter(val list : List<String>,var index: Int) : RecyclerView.Adapter<HistoryViewHolder>() {
-
+    private lateinit var binding:FragmentHistoryBinding
     private lateinit var listener :  OnClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -15,9 +16,12 @@ class HistoryViewAdapter(val list : List<String>,var index: Int) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.historyName.text = list[position]
-        holder.itemView.setOnClickListener {
-            listener.onItemClick(list,position)
+        holder.run {
+
+            historyName.text = list[position]
+            itemView.setOnClickListener {
+                listener.onItemClick(list,position)
+            }
         }
     }
 

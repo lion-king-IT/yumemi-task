@@ -1,31 +1,28 @@
 package com.reo.running.yumemitask.screen.history
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.reo.running.yumemitask.R
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
-import com.reo.running.yumemitask.screen.details.DetailsFragmentArgs
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.reo.running.yumemitask.databinding.HistoryItemRecyclerviewBinding
 
 class HistoryFragment : Fragment() {
-    private val contributorsDao = YumemiApplication.db.contributorsDao()
     private lateinit var binding: FragmentHistoryBinding
-    private val historyViewModel: HistoryViewModel by viewModels()
-    private lateinit var action: NavDirections
-    private val args: DetailsFragmentArgs by navArgs()
+    private val historyViewModel: HistoryViewModel by activityViewModels() {
+        HistoryViewModel.Companion.Factory()
+    }
+    private val historyRecyclerViewAdapter: HistoryViewAdapter by lazy {
+        HistoryViewAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,35 +38,32 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val lastIndex = contributorsDao.getAll().lastIndex
-                val historyList: MutableList<String> = mutableListOf()
-                contributorsDao.getAll().let {
-                    for (i in lastIndex downTo 0 step 1) {
-                        historyList.add(it[i].login)
-                    }
-                }
-                withContext(Dispatchers.Main) {
-                    var position = 0
-                    val adapter = HistoryViewAdapter(historyList, position)
-                    historyRecyclerView.adapter = adapter
-                    historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    adapter.setOnItemClickListener(
-                        object : HistoryViewAdapter.OnClickListener {
-                            override fun onItemClick(list: List<String>, position: Int) {
-                                println(position)
-                                val action = HistoryFragmentDirections.actionNavHistoryToNavDetails(
-                                    historyList[position]
-                                )
-                                findNavController().navigate(action)
-                            }
-                        }
-                    )
-                }
+            historyRecyclerView.run {
+                adapter =
             }
-
-
         }
     }
 
+    private inner class HistoryViewAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder =
+            HistoryViewHolder(
+                HistoryItemRecyclerviewBinding.inflate(
+                    LayoutInflater.from(requireContext()),
+                    parent,
+                    false
+                )
+            )
+
+        override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
+            holder.binding.run {
+                lifecycleOwner = viewLifecycleOwner
+                historyViewModel.contributorsList
+            }
+        }
+
+        override fun getItemCount(): Int = historyViewModel.contributorsList.value?.size ?: 0
+    }
+
+    private inner class HistoryViewHolder(val binding: HistoryItemRecyclerviewBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

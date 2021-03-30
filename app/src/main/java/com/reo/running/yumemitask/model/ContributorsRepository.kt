@@ -16,8 +16,8 @@ class ContributorsRepository(
         }
     }
 
-    suspend fun displayHistory(): Contributor? {
-        return contributorsDataDao.getAll().lastOrNull()
+    suspend fun getLastIndex(): Int {
+        return contributorsDataDao.getAll().lastIndex
     }
 
     suspend fun saveHistory(contributor: Contributor) {

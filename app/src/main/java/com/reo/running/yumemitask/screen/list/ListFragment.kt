@@ -67,7 +67,6 @@ class ListFragment : Fragment() {
                     container.setOnClickListener { _ ->
                         listViewModel.selectContributor(position)
                         ListFragmentDirections.actionNavListToNavDetails(
-                            it.login
                         ).run {
                             findNavController().navigate(this)
                         }

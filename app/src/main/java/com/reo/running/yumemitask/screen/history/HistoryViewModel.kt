@@ -16,39 +16,30 @@ import kotlinx.coroutines.withContext
 
 class HistoryViewModel(
     private val repository: ContributorsRepository,
-    private val readDao: ContributorsDatabase
 ) : ViewModel() {
     val contributorsList: LiveData<List<Contributor>?> = repository.getRepository()
 
     private val _selectedHistory = MutableLiveData<Contributor>()
     val selectedHistory: LiveData<Contributor> = _selectedHistory
 
-    fun selectHistory(position: Int) {
+    fun displayHistory(position: Int): MutableList<String> {
+        val historyList: MutableList<String> = mutableListOf()
         _selectedHistory.value = contributorsList.value?.get(position)
         viewModelScope.launch {
-            contributorsList.value?.get(position)?.run {
-                repository.
-            }
-        }
-    }
-
-    fun displayHistory() {
-        viewModelScope.launch(Dispatchers.IO) {
             val lastIndex = repository.getLastIndex()
-            val historyList: MutableList<String> = mutableListOf()
-            readDao.contributorsDao().getAll().let {
-                for (i in lastIndex downTo 0 step 1) {
-                    historyList.add(it[i].login)
+            contributorsList.value?.get(position)?.run {
+
+                repository.getHistory().let {
+                    for (i in lastIndex downTo 0 step 1) {
+                        historyList.add(it[i].login)
+                    }
                 }
             }
-            withContext(Dispatchers.Main) {
-                var position = 0
-                val adapter = HistoryViewAdapter(historyList,position)
-
-            }
         }
+        return historyList
     }
 
+    fun selectHistory()
 
     companion object {
         class Factory(

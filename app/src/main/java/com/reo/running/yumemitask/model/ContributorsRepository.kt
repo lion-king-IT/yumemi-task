@@ -20,6 +20,10 @@ class ContributorsRepository(
         return contributorsDataDao.getAll().lastIndex
     }
 
+    suspend fun getHistory() : List<Contributor> {
+        return contributorsDataDao.getAll()
+    }
+
     suspend fun saveHistory(contributor: Contributor) {
         contributorsDataDao.insertContributors(contributor)
     }

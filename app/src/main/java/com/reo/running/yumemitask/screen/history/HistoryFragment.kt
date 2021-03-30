@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reo.running.yumemitask.R
 import com.reo.running.yumemitask.YumemiApplication
@@ -17,7 +19,7 @@ import com.reo.running.yumemitask.databinding.HistoryItemRecyclerviewBinding
 
 class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
-    private val historyViewModel: HistoryViewModel by activityViewModels() {
+    private val historyViewModel: HistoryViewModel by activityViewModels {
         HistoryViewModel.Companion.Factory()
     }
     private val historyRecyclerViewAdapter: HistoryViewAdapter by lazy {
@@ -39,9 +41,13 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.run {
             historyRecyclerView.run {
-                adapter =
+                adapter = historyRecyclerViewAdapter
+                layoutManager = LinearLayoutManager(requireContext())
             }
         }
+        historyViewModel.contributorsList.observe(viewLifecycleOwner, Observer {
+            historyRecyclerViewAdapter.notifyDataSetChanged()
+        })
     }
 
     private inner class HistoryViewAdapter : RecyclerView.Adapter<HistoryViewHolder>() {

@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reo.running.yumemitask.R
@@ -60,9 +61,12 @@ class HistoryFragment : Fragment() {
         override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
             holder.binding.run {
                 lifecycleOwner = viewLifecycleOwner
-                contributor = historyViewModel.contributorsList.value?.get(position)
-                container.setOnClickListener {
-                    historyViewModel.
+                historyViewModel.contributorsList.value?.get(position).let {
+                    contributor = it
+                    container.setOnClickListener {
+                      val action = HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(0)
+                        findNavController().navigate(action)
+                    }
                 }
             }
         }

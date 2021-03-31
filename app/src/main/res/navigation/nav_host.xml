@@ -19,4 +19,8 @@
         android:name="com.reo.running.yumemitask.screen.history.HistoryFragment"
         android:label="fragmentHistory"
         tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/historyDetailsFragment2"
+        android:name="com.reo.running.yumemitask.screen.history.HistoryDetailsFragment"
+        android:label="HistoryDetailsFragment" />
 </navigation>

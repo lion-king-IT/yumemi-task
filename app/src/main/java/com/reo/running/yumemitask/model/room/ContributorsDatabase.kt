@@ -1,48 +1,26 @@
 package com.reo.running.yumemitask.model.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.reo.running.yumemitask.model.Github
+import com.reo.running.yumemitask.model.Contributor
 
-@Database(entities = [ContributorsData::class], version = 1)
+@Database(entities = [Contributor::class], version = 1)
 abstract class ContributorsDatabase : RoomDatabase() {
     abstract fun contributorsDao(): ContributorsDataDao
 }
 
-@Entity
-data class ContributorsData(
-    @PrimaryKey(autoGenerate = true)
-    val num: Int,
-    val id: Long,
-    val login: String,
-    val node_id: String, val avatar_url: String,
-    val gravatar_id: String,
-    val url: String,
-    val html_url: String,
-    val followers_url: String,
-    val following_url: String,
-    val gists_url: String,
-    val starred_url: String,
-    val subscriptions_url: String,
-    val organizations_url: String,
-    val repos_url: String,
-    val events_url: String,
-    val received_events_url: String,
-    val type: String,
-    val site_admin: Boolean,
-    val contributions: Int,
-)
 
 @Dao
 interface ContributorsDataDao {
-    @Query("Select * From contributorsData")
-    suspend fun getAll(): List<ContributorsData>
+    @Query("Select * From contributor")
+    fun getAll(): LiveData<List<Contributor>?>
 
-    @Insert
-    suspend fun insertContributors(contributors: ContributorsData)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertContributors(contributors: Contributor)
 
     @Update
-    suspend fun updateContributors(contributors: List<ContributorsData>)
+    suspend fun updateContributors(contributors: List<Contributor>)
 
     @Delete
-    suspend fun deleteContributors(contributors: List<ContributorsData>)
+    suspend fun deleteContributors(contributors: List<Contributor>)
 }

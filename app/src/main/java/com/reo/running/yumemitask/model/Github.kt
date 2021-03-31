@@ -1,8 +1,13 @@
 package com.reo.running.yumemitask.model
 
-data class Github(
-    val login: String,
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class Contributor(
+    @PrimaryKey
     val id: Long,
+    val login: String,
     val node_id: String,
     val avatar_url: String,
     val gravatar_id: String,
@@ -19,5 +24,9 @@ data class Github(
     val received_events_url: String,
     val type: String,
     val site_admin: Boolean,
-    val contributions: Int,
-)
+    val contributions: Long,
+) {
+    fun idText(): String = id.toString()
+    fun contributionsText(): String = contributions.toString()
+    fun siteAdminText(): String = site_admin.toString()
+}

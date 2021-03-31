@@ -18,12 +18,6 @@
         android:name="com.reo.running.yumemitask.screen.details.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
-        <argument
-            android:name="contributorsName"
-            app:argType="string" />
-        <argument
-            android:name="index"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/nav_history"
@@ -31,7 +25,17 @@
         android:label="HistoryFragment"
         tools:layout="@layout/fragment_history">
         <action
-            android:id="@+id/action_nav_history_to_nav_details"
-            app:destination="@id/nav_details" />
+            android:id="@+id/action_nav_history_to_historyDetailsFragment"
+            app:destination="@id/historyDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetailsFragment"
+        android:name="com.reo.running.yumemitask.screen.history.HistoryDetailsFragment"
+        android:label="HistoryDetailsFragment" >
+
+        <argument
+            android:name="selectElement"
+            app:argType="integer"/>
+
     </fragment>
 </navigation>

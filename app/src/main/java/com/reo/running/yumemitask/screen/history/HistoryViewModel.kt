@@ -1,16 +1,28 @@
 package com.reo.running.yumemitask.screen.history
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.reo.running.yumemitask.YumemiApplication
+import androidx.lifecycle.*
+import com.reo.running.yumemitask.model.Contributor
+import com.reo.running.yumemitask.model.ContributorsRepository
 
-class HistoryViewModel : ViewModel() {
-    private val _historyText: MutableLiveData<String> =
-        MutableLiveData<String>().also { mutableLiveData ->
-            mutableLiveData.value = "履歴"
+class HistoryViewModel(
+    repository: ContributorsRepository
+) : ViewModel() {
+    val contributorsList: LiveData<List<Contributor>?> = repository.getHistory()
+
+    private val _selectedContributor = MutableLiveData<Contributor>()
+    val selectedContributor: LiveData<Contributor> = _selectedContributor
+
+    fun selectContributor(position: Int) {
+        _selectedContributor.value = contributorsList.value?.get(position)
+    }
+
+    companion object {
+        class Factory(
+            private val repository: ContributorsRepository = ContributorsRepository()
+        ) : ViewModelProvider.NewInstanceFactory() {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+                HistoryViewModel(repository) as T
         }
-
-    val historyText: LiveData<String>
-        get() = _historyText
+    }
 }

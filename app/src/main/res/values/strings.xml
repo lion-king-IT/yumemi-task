@@ -5,4 +5,22 @@
     <string name="details_text">詳細</string>
     <string name="nameTitleText">- Contributors Name -</string>
     <string name="history">なし</string>
+    <string name="contributorsId">id</string>
+    <string name="contiruborsNodeId">node_id</string>
+    <string name="contributorsAvatarUrl">avatar_url</string>
+    <string name="contributorsGrvatarIdTitle">gravatar_id</string>
+    <string name="contributorsUrl">url</string>
+    <string name="contributorsHtmlUrl">html_url</string>
+    <string name="contributorsFollowersUrl">followers_url</string>
+    <string name="contributorsFollowingUrl">following_url</string>
+    <string name="contributorsGistsUrl">gists_url</string>
+    <string name="contributorsStarredUrl">starred_url</string>
+    <string name="contributorsSubscriptionUrl">subscription_url</string>
+    <string name="contributorsOrganizationsUrl">organizations_url</string>
+    <string name="contributorsReposUrl">repos_url</string>
+    <string name="contributorsEventsUrl">events_url</string>
+    <string name="contributorsReceivedEventsUrl">received_events_url</string>
+    <string name="contributorsType">type</string>
+    <string name="contributorsSiteAdmin">site_admin</string>
+    <string name="contributorsContributors">contributions</string>
 </resources>

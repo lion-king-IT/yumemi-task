@@ -2,6 +2,7 @@ package com.reo.running.yumemitask.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.map
 import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.model.room.ContributorsDataDao
 
@@ -21,7 +22,9 @@ class ContributorsRepository(
     }
 
     fun getHistory(): LiveData<List<Contributor>?> {
-        return contributorsDataDao.getAll()
+        return contributorsDataDao.getAll().map {
+            it?.reversed()
+        }
     }
 
 }

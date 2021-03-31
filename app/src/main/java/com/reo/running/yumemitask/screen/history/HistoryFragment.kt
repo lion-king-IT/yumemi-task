@@ -1,21 +1,14 @@
 package com.reo.running.yumemitask.screen.history
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.reo.running.yumemitask.R
-import com.reo.running.yumemitask.YumemiApplication
 import com.reo.running.yumemitask.databinding.FragmentHistoryBinding
 import com.reo.running.yumemitask.databinding.HistoryItemRecyclerviewBinding
 
@@ -32,7 +25,7 @@ class HistoryFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
         binding.lifecycleOwner = this
@@ -47,7 +40,7 @@ class HistoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
-        historyViewModel.contributorsList.observe(viewLifecycleOwner, Observer {
+        historyViewModel.contributorsList.observe(viewLifecycleOwner, {
             historyRecyclerViewAdapter.notifyDataSetChanged()
         })
     }
@@ -68,10 +61,11 @@ class HistoryFragment : Fragment() {
                 historyViewModel.contributorsList.value?.get(position).let {
                     contributors = it
                     container.setOnClickListener {
-                        val selectIndex = position
-                        Log.d("debug","selectIndex = $position")
+                        historyViewModel.selectContributor(position)
                         val action =
-                            HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(selectIndex)
+                            HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(
+                                position
+                            )
                         findNavController().navigate(action)
                     }
                 }

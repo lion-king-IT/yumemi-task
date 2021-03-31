@@ -5,8 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.reo.running.yumemitask.screen.list.ListViewModel" />
-
+            type="com.reo.running.yumemitask.screen.history.HistoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -142,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="@{viewModel.selectedContributor.login}"
+                    android:text="@{viewModel.selectedContributor.gravatar_id}"
                     android:textColor="@color/teal_200"
                     android:textSize="24sp"
                     android:layout_marginStart="16dp"

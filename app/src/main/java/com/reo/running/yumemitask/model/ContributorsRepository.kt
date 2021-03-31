@@ -16,12 +16,12 @@ class ContributorsRepository(
         }
     }
 
-
-    fun getHistory() : LiveData<List<Contributor>> {
-        return contributorsDataDao.getAll()
-    }
-
     suspend fun saveHistory(contributor: Contributor) {
         contributorsDataDao.insertContributors(contributor)
     }
+
+    fun getHistory(): LiveData<List<Contributor>?> {
+        return contributorsDataDao.getAll()
+    }
+
 }

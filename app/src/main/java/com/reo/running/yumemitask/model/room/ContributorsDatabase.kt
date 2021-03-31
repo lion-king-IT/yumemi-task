@@ -13,7 +13,7 @@ abstract class ContributorsDatabase : RoomDatabase() {
 @Dao
 interface ContributorsDataDao {
     @Query("Select * From contributor")
-    fun getAll(): LiveData<List<Contributor>>
+    fun getAll(): LiveData<List<Contributor>?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertContributors(contributors: Contributor)

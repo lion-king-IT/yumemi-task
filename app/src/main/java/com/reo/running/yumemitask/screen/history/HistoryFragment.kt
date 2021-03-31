@@ -1,6 +1,7 @@
 package com.reo.running.yumemitask.screen.history
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,9 @@ class HistoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
+        historyViewModel.contributorsList.observe(viewLifecycleOwner, Observer {
+            historyRecyclerViewAdapter.notifyDataSetChanged()
+        })
     }
 
     private inner class HistoryViewAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
@@ -61,10 +65,13 @@ class HistoryFragment : Fragment() {
         override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
             holder.binding.run {
                 lifecycleOwner = viewLifecycleOwner
-                historyViewModel.displayHistory()?.let {
-                    contributor = it[position]
+                historyViewModel.contributorsList.value?.get(position).let {
+                    contributors = it
                     container.setOnClickListener {
-                      val action = HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(0)
+                        val selectIndex = position
+                        Log.d("debug","selectIndex = $position")
+                        val action =
+                            HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(selectIndex)
                         findNavController().navigate(action)
                     }
                 }

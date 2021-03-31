@@ -3,17 +3,15 @@ package com.reo.running.yumemitask.screen.history
 import androidx.lifecycle.*
 import com.reo.running.yumemitask.model.Contributor
 import com.reo.running.yumemitask.model.ContributorsRepository
-import kotlinx.coroutines.launch
 
 class HistoryViewModel(
     private val repository: ContributorsRepository
 ) : ViewModel() {
-    val contributorsList: LiveData<List<Contributor>> = repository.getHistory()
+    val contributorsList: LiveData<List<Contributor>?> = repository.getHistory()
 
     fun displayHistory(): List<Contributor>? {
         return contributorsList.value?.reversed()
     }
-
 
     companion object {
         class Factory(

@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="contributor"
+            name="contributors"
             type="com.reo.running.yumemitask.model.Contributor" />
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
-            android:text="@{contributor.login}"
+            android:text="@{contributors.login}"
             android:textColor="@color/teal_200"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"

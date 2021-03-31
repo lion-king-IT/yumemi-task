@@ -31,5 +31,11 @@
     <fragment
         android:id="@+id/historyDetailsFragment"
         android:name="com.reo.running.yumemitask.screen.history.HistoryDetailsFragment"
-        android:label="HistoryDetailsFragment" />
+        android:label="HistoryDetailsFragment" >
+
+        <argument
+            android:name="selectElement"
+            app:argType="integer"/>
+
+    </fragment>
 </navigation>

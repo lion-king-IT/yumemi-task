@@ -9,18 +9,15 @@ class ContributorsRepository(
     private val remoteDataSource: RemoteDataSource = RemoteDataSource(),
     private val contributorsDataDao: ContributorsDataDao = YumemiApplication.db.contributorsDao()
 ) {
-    fun getRepository(): LiveData<List<Contributor>?> {
+    fun getContributors(): LiveData<List<Contributor>?> {
         return liveData {
             val repos = remoteDataSource.getRepository()
             emit(repos)
         }
     }
 
-    suspend fun getLastIndex(): Int {
-        return contributorsDataDao.getAll().lastIndex
-    }
 
-    suspend fun getHistory() : List<Contributor> {
+    fun getHistory() : LiveData<List<Contributor>> {
         return contributorsDataDao.getAll()
     }
 

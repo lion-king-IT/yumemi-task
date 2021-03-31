@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 class ListViewModel(
     private val repository: ContributorsRepository
 ) : ViewModel() {
-    val contributorsList: LiveData<List<Contributor>?> = repository.getRepository()
+    val contributorsList: LiveData<List<Contributor>?> = repository.getContributors()
 
     private val _selectedContributor = MutableLiveData<Contributor>()
     val selectedContributor: LiveData<Contributor> = _selectedContributor

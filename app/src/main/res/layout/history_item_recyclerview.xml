@@ -4,11 +4,12 @@
 
     <data>
         <variable
-            name="historyViewModel"
-            type="com.reo.running.yumemitask.screen.history.HistoryViewModel" />
+            name="contributor"
+            type="com.reo.running.yumemitask.model.Contributor" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
-            android:text=""
+            android:text="@{contributor.login}"
             android:textColor="@color/teal_200"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"

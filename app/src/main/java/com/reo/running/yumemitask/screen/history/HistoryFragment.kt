@@ -45,9 +45,6 @@ class HistoryFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
-        historyViewModel.contributorsList.observe(viewLifecycleOwner, Observer {
-            historyRecyclerViewAdapter.notifyDataSetChanged()
-        })
     }
 
     private inner class HistoryViewAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
@@ -63,7 +60,10 @@ class HistoryFragment : Fragment() {
         override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
             holder.binding.run {
                 lifecycleOwner = viewLifecycleOwner
-                historyViewModel.contributorsList
+                contributor = historyViewModel.contributorsList.value?.get(position)
+                container.setOnClickListener {
+                    historyViewModel.
+                }
             }
         }
 

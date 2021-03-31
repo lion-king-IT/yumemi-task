@@ -17,7 +17,7 @@ import com.reo.running.yumemitask.databinding.ListviewItemRecyclerviewBinding
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
-    private val listViewModel: ListViewModel by activityViewModels() {
+    private val listViewModel: ListViewModel by activityViewModels {
         ListViewModel.Companion.Factory()
     }
     private val listRecyclerViewAdapter: ListViewAdapter by lazy {

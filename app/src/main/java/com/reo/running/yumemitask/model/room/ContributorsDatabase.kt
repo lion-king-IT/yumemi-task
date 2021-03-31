@@ -1,5 +1,6 @@
 package com.reo.running.yumemitask.model.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.reo.running.yumemitask.model.Contributor
 
@@ -12,7 +13,7 @@ abstract class ContributorsDatabase : RoomDatabase() {
 @Dao
 interface ContributorsDataDao {
     @Query("Select * From contributor")
-    suspend fun getAll(): List<Contributor>
+    fun getAll(): LiveData<List<Contributor>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertContributors(contributors: Contributor)

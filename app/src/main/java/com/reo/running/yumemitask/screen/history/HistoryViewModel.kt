@@ -10,20 +10,8 @@ class HistoryViewModel(
 ) : ViewModel() {
     val contributorsList: LiveData<List<Contributor>> = repository.getHistory()
 
-    fun displayHistory() {
-        viewModelScope.launch {
-            contributorsList.value?.lastIndex.let {
-                if (it != null) {
-                    for (i in it downTo 0 step 1) {
-                        contributorsList.value?.indexOf(it)
-                    }
-                }
-
-
-            }
-        }
-
-
+    fun displayHistory(): List<Contributor>? {
+        return contributorsList.value?.reversed()
     }
 
 

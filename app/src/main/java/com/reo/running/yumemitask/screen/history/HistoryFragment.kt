@@ -61,8 +61,8 @@ class HistoryFragment : Fragment() {
         override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
             holder.binding.run {
                 lifecycleOwner = viewLifecycleOwner
-                historyViewModel.contributorsList.value?.get(position).let {
-                    contributor = it
+                historyViewModel.displayHistory()?.let {
+                    contributor = it[position]
                     container.setOnClickListener {
                       val action = HistoryFragmentDirections.actionNavHistoryToHistoryDetailsFragment(0)
                         findNavController().navigate(action)
